@@ -19,4 +19,14 @@ $dark:                            #444 !default;
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
-@import "www/lib/ionic/scss/ionic";
+@import "../../lib/ionic/scss/ionic";
+
+.header h1 {
+  margin: 0;
+  padding: 5px 0;
+  text-align: center;
+  font-size: 2em;
+  border-color: #111;
+  background-color: #444444;
+  color: #fff;
+}

@@ -7,7 +7,7 @@
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="lib/ngprogress-lite/ngprogress-lite.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="assets/stylesheets/styles.css" rel="stylesheet">
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -19,10 +19,16 @@
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
+    <!-- inject:partials -->
+    <!-- angular templates will be automatically converted in js and inserted here -->
+    <!-- endinject -->
+
     <!-- your app's js -->
+    <script src="lib/x2js/xml2json.min.js"></script>
+    <script src="lib/angular-xml/angular-xml.min.js"></script>
     <script src="lib/ngprogress-lite/ngprogress-lite.min.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
+    <script src="assets/javascripts/app.js"></script>
+
   </head>
 
   <body ng-app="starter">
