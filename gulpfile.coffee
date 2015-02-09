@@ -1,8 +1,12 @@
 gulp = require 'gulp'
+jeditor = require 'gulp-json-editor'
+request = require 'request'
+source = require 'vinyl-source-stream'
+streamify = require 'gulp-streamify'
 
-$ = require('gulp-load-plugins')({
+$ = require('gulp-load-plugins')(
   pattern: ['gulp-*', 'run-sequence']
-});
+)
 
 sources =
   sass: 'src/assets/scss/*.scss'
@@ -20,6 +24,7 @@ destinations =
 
 filesToMove = [
   'src/lib/**'
+  'src/data/**'
   'src/assets/images/**'
 ]
 
@@ -141,6 +146,25 @@ gulp.task 'watch', ->
 ###
 gulp.task 'clean', ->
   gulp.src([destinations.html], {read: false}).pipe($.clean())
+
+###
+  Download basic JSON files
+###
+gulp.task 'make-cidades-json', ->
+  request(
+    url: 'http://www.portaldocidadao.tce.sp.gov.br/api_json_municipios'
+    headers:
+      'User-Agent': 'request'
+  )
+  .pipe(source('src/data/municipios.json'))
+  .pipe gulp.dest('./')
+  request(
+    url: 'http://www.portaldocidadao.tce.sp.gov.br/api_json_orgaos'
+    headers:
+      'User-Agent': 'request'
+  )
+  .pipe(source('src/data/orgaos.json'))
+  .pipe gulp.dest('./')
 
 ###
   Run the entire process

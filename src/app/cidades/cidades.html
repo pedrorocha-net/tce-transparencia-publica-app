@@ -1,7 +1,12 @@
 <ion-view view-title="Cidades">
   <ion-content>
+    <form class="form-inline">
+      <input ng-model="query" type="text" autofocus
+             placeholder="Qual cidade quer detalhar?"/>
+    </form>
     <ion-list>
-      <ion-item ng-repeat="cidade in cidades" href="#/app/cidade/{{cidade.id}}">
+      <ion-item href="#/app/cidade/{{cidade.id}}"
+                ng-repeat="cidade in cidades | filter: {nome: query} | orderBy: 'nome'">
         {{cidade.nome}}
       </ion-item>
     </ion-list>
