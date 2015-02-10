@@ -25,19 +25,26 @@
     templateUrl: 'partials/menu.html'
     controller: 'AppCtrl'
 
-  .state 'app.cidades',
-    url: '/cidades'
+  .state 'app.municipios',
+    url: '/municipios'
     views:
       'menuContent':
-        templateUrl: 'partials/app/cidades/cidades.html'
-        controller: 'CidadesCtrl'
+        templateUrl: 'partials/app/municipios/listagem.html'
+        controller: 'MunicipiosListagemCtrl'
 
-  .state 'app.cidade',
-    url: '/cidade/:cidadeId'
+  .state 'app.detalharMunicipio',
+    url: '/municipio/:municipioId'
     views:
       'menuContent':
-        templateUrl: 'partials/app/cidades/cidade.html'
-        controller: 'CidadeCtrl'
+        templateUrl: 'partials/app/municipios/detalhar-municipio.html'
+        controller: 'MunicipiosDetalharCtrl'
+
+  .state 'app.detalharOrgao',
+    url: '/orgao/:municipioId/:orgaoId'
+    views:
+      'menuContent':
+        templateUrl: 'partials/app/orgaos/detalhar-orgao.html'
+        controller: 'OrgaosDetalharCtrl'
 
   # if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise '/app/cidades'
+  $urlRouterProvider.otherwise '/app/municipios'

@@ -1,0 +1,18 @@
+<ion-view ng-init="init()">
+  <ion-content>
+    <h1>{{orgao.nome}}</h1>
+
+    <div class="row">
+      <div class="col">Mês</div>
+      <div class="col">Valor empenhado</div>
+      <div class="col">Valor liquidado</div>
+      <div class="col">Valor pago</div>
+    </div>
+    <div class="row" ng-repeat="despesa in despesas.xml.node">
+      <div class="col">{{ despesa.mes }}</div>
+      <div class="col">{{ despesa.valorempenhado }}</div>
+      <div class="col">{{ despesa.valorliquidado }}</div>
+      <div class="col">{{ despesa.valorpago }}</div>
+    </div>
+  </ion-content>
+</ion-view>
