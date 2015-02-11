@@ -1,1 +1,0 @@
-# tce-transparencia-publica-app
