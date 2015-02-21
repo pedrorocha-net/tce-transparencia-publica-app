@@ -2,6 +2,23 @@
   <ion-content>
     <h1>{{orgao.nome}}</h1>
 
+    <chartist class="ct-chart" chartist-data="chartData" ng-if="chartData"
+              chartist-chart-type="Bar"
+              chartist-chart-options="chartOptions">
+    </chartist>
+
+    <div class="row">
+      <div class="col">
+        Valor empenhado {{valorEmpenhadoTotal}}
+      </div>
+      <div class="col">
+        Valor liquidado {{valorLiquidadoTotal}}
+      </div>
+      <div class="col">
+        Valor pago {{valorPagoTotal}}
+      </div>
+    </div>
+
     <div class="row">
       <div class="col">Mês</div>
       <div class="col">Valor empenhado</div>

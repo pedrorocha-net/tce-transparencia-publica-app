@@ -3,6 +3,7 @@
   'ngProgressLite'
   'xml'
   'templateCache'
+  'angular-chartist'
 ]
 
 @Application.run ($ionicPlatform) ->

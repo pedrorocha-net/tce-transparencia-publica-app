@@ -175,4 +175,4 @@ gulp.task 'build', ->
 ###
   Default command to run when calling just "gulp"
 ###
-gulp.task 'default', ['build', 'watch']
+gulp.task 'default', ['watch']

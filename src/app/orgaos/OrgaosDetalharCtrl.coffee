@@ -23,5 +23,33 @@
     ngProgressLite.start()
     TCEService.getDespesas(municipioId, orgaoId, ano).then (data) ->
       $scope.despesas = data.data.nodes
-      console.log $scope.despesas
+
+      $scope.valorEmpenhadoTotal = 0
+      $scope.valorLiquidadoTotal = 0
+      $scope.valorPagoTotal = 0
+      $scope.despesas.filter (obj) ->
+        $scope.valorEmpenhadoTotal +=
+          $scope.limparNumero obj.node.vl_empenhado
+      $scope.despesas.filter (obj) ->
+        $scope.valorLiquidadoTotal +=
+          $scope.limparNumero obj.node.vl_liquidado
+      $scope.despesas.filter (obj) ->
+        $scope.valorPagoTotal +=
+          $scope.limparNumero obj.node.vl_pago
+
+      $scope.chartOptions =
+        horizontalBars: true
+        reverseData: true
+        
+      $scope.chartData =
+        labels: ['Empenhado', 'Liquidado', 'Pago']
+        series: [[
+                   $scope.valorEmpenhadoTotal
+                   $scope.valorLiquidadoTotal
+                   $scope.valorPagoTotal
+                 ]]
+
       ngProgressLite.done()
+
+  $scope.limparNumero = (string) ->
+    parseFloat string.replace(/\./g, '').replace(',', '.')
