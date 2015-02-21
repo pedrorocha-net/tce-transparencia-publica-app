@@ -1,5 +1,5 @@
 @Application.controller 'OrgaosDetalharCtrl'
-, ($scope, $http, $stateParams, ngProgressLite, TCEData) ->
+, ($scope, $http, $stateParams, ngProgressLite, TCEData, TCEService) ->
   $scope.init = () ->
     $scope.anoPesquisado = '2014'
     $scope.municipio = {}
@@ -21,11 +21,7 @@
 
   $scope.buscarDados = (municipioId, orgaoId, ano) ->
     ngProgressLite.start()
-    url = 'http://www.portaldocidadao.tce.sp.gov.br/despesa_total_xml/'
-    url += "#{municipioId}/#{orgaoId}/#{ano}/despesas"
-    $http
-      method: "GET"
-      url: url
-    .then (data) ->
-      $scope.despesas = data.data
+    TCEService.getDespesas(municipioId, orgaoId, ano).then (data) ->
+      $scope.despesas = data.data.nodes
+      console.log $scope.despesas
       ngProgressLite.done()

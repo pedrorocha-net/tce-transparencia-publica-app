@@ -8,11 +8,11 @@
       <div class="col">Valor liquidado</div>
       <div class="col">Valor pago</div>
     </div>
-    <div class="row" ng-repeat="despesa in despesas.xml.node">
-      <div class="col">{{ despesa.mes }}</div>
-      <div class="col">{{ despesa.valorempenhado }}</div>
-      <div class="col">{{ despesa.valorliquidado }}</div>
-      <div class="col">{{ despesa.valorpago }}</div>
+    <div class="row" ng-repeat="despesa in despesas">
+      <div class="col">{{ despesa.node.mes_referencia }}</div>
+      <div class="col">{{ despesa.node.vl_empenhado }}</div>
+      <div class="col">{{ despesa.node.vl_liquidado }}</div>
+      <div class="col">{{ despesa.node.vl_pago }}</div>
     </div>
   </ion-content>
 </ion-view>
