@@ -17,7 +17,8 @@
         angular.forEach orgaosResult.data.nodes, (orgao, key) ->
           municipios.filter (obj) ->
             if (obj.id == orgao.node.id_municipio)
-              obj.orgaos = []
+              unless obj.orgaos?.length
+                obj.orgaos = []
               obj.orgaos.push
                 id: orgao.node.id_orgao_municipio
                 nome: orgao.node.ds_orgao
